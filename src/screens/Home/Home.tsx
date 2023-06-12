@@ -1,8 +1,15 @@
-import React = require("react");
+import React from "react";
 import { Text } from "react-native";
 
-const Home: React.FC = () => {
-  return <Text>Salut from home!</Text>;
+// models
+import { CompositeScreenProps } from "@react-navigation/native";
+
+const Home: React.FC<CompositeScreenProps<any, any>> = ({ navigation }) => {
+  return (
+    <Text onPress={() => navigation.navigate("Settings")}>
+      Salut from home!
+    </Text>
+  );
 };
 
 export default Home;
