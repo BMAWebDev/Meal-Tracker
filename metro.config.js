@@ -2,12 +2,12 @@
 
 const { getDefaultConfig } = require("metro-config");
 
-module.exports = (async () => {
+const config = (async () => {
   const {
     resolver: { sourceExts, assetExts },
   } = await getDefaultConfig();
 
-  return {
+  const configOptions = {
     resolver: {
       sourceExts: [...sourceExts, "jsx", "js", "ts", "tsx"], // Add TypeScript extensions
       assetExts: assetExts.filter((ext) => ext !== "svg"), // Exclude any unwanted asset extensions
@@ -16,4 +16,8 @@ module.exports = (async () => {
       },
     },
   };
+
+  return configOptions;
 })();
+
+module.exports = config;
